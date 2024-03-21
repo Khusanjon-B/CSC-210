@@ -1,0 +1,3 @@
+int() - turns number to integer
+
+str() - turns into string
