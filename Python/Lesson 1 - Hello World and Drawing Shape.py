@@ -5,3 +5,5 @@ print("  / |")
 print(" /  |")
 print("/___|")
 
+print("Hello again")
+
