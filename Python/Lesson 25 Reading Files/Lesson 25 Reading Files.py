@@ -12,7 +12,7 @@
 
 #"r+" give you the method of reading and writing
 
-employee_file = open('/Python/Lesson 25 Reading Files/employees.txt',"r")
+employee_file = open('./employees.txt', 'r')
 
 #How to check if a file is readable - the function below returns a boolean value
 print(employee_file.readable())
