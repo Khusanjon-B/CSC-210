@@ -1,3 +1,5 @@
 int() - turns number to integer
 
 str() - turns into string
+
+float() - turns input into float - decimals
