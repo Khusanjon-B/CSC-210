@@ -3,3 +3,22 @@ int() - turns number to integer
 str() - turns into string
 
 float() - turns input into float - decimals
+
+Free modules:
+
+https://docs.python.org/3/py-modindex.html
+
+You can also just search of python module for x
+
+Rewatch the video on Modules and pip to review how it works
+
+
+For the command prompt python interpreter just type in the following
+
+    search for command prompt
+
+    Type python3
+
+    enter
+
+    Now you have a working python interpreter
