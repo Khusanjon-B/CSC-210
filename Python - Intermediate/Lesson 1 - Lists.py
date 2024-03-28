@@ -56,3 +56,50 @@ print(myListReversed)
 print(myList)
 
 myList.clear()#This empties your list
+
+
+
+
+#This allows for you to create a list with multiple of the same elements
+myNewList = [1] * 5
+
+print(myNewList)
+
+myList2 = [1,2,3,4,5,7,8,9]
+
+#This creates a list that concatenates the lists
+new_list = myNewList + myList2
+
+print(new_list)
+
+#Slicing - this allows access to subparts of list using : which separates the start and stop indices but excluding the last index
+
+a = myList2[2:6]
+
+print(a)
+
+#:5 - starts all the way from beginning
+#5: - goes all the way to the end
+
+# ::1 - goes from beginning to end by 1 index jumps
+# ::2 - goes from beginning to end by 2 index jumps
+
+# ::-1 reverses list
+
+list_org = ["banana", "cherry", "apple"]
+
+list_cpy = list_org
+# If you do the above then whatever change you make to the copy then you also change the original list
+
+#better to use the following methods
+
+list_cpy = list_org.copy()
+list_cpy = list(list_org)
+list_cpy = list_org[:] #Takes everything from original list
+
+#List comprehension
+#fast way to create new list from existing list
+
+b = [1,2,3,4,5,6,7]
+#This squares the values in b and then assigns it to list c
+c = [i*i for i in b]
