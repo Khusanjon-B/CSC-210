@@ -9,6 +9,16 @@ Last Modified:
 
 */
 
+GUI Output
+
+import javax.swing.JOptionPane;
+
+https://stackoverflow.com/questions/13334198/java-custom-buttons-in-showinputdialog
+
+https://www.javatpoint.com/java-joptionpane
+
+https://docs.oracle.com/javase/8/docs/api/javax/swing/JOptionPane.html
+
 
 Scanner:
 
