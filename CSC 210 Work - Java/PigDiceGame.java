@@ -48,20 +48,20 @@ public class PigDiceGame
 
         //This do/while loop is the opening to the game
 
-        enter();
-        enter();
+        skipLine();
+        skipLine();
             
         System.out.println("Welcome to the Dice Game!!");
 
-        enter();
+        skipLine();
 
         do {
 
         System.out.println("When you are ready type Yes/No");
 
-        enter();
+        skipLine();
 
-        arrow();
+        arrowIndicator();
 
         input = scanner1.nextLine();
 
@@ -72,19 +72,19 @@ public class PigDiceGame
 
         System.out.println("The object of the game is to be the first to score 100 points");
         
-        enter();
+        skipLine();
 
         System.out.println("Here are the rules of the game:");
 
-        enter();
+        skipLine();
 
         System.out.println("On a turn, each player rolls two dice. If no 1 appears, the dice values are added to the running total, and the player can choose whether to roll again or pass the turn to the other player.");
 
-        enter();
+        skipLine();
 
         System.out.println("If a 1 appears on one of the dice, nothing more is added to the player’s total and it becomes the other player’s turn.");
 
-        enter();
+        skipLine();
 
         System.out.println("Ready? (Enter Yes/No)");
 
@@ -96,7 +96,7 @@ public class PigDiceGame
 
                 System.out.println("Type Yes once ready...");
 
-                arrow();
+                arrowIndicator();
 
                 input = scanner1.nextLine();
 
@@ -110,13 +110,13 @@ public class PigDiceGame
 
             if(turn==0){
 
-                spacer();
+                rollSeparate();
 
-                enter();
+                skipLine();
 
                 System.out.println("Type Roll to roll your die");
 
-                arrow();
+                arrowIndicator();
 
                 input = scanner1.nextLine();
 
@@ -132,7 +132,7 @@ public class PigDiceGame
 
                     System.out.println("You rolled a " + playerRolls.get(playerRolls.size() - 2) + " and a " + playerRolls.get(playerRolls.size() - 1));
 
-                    enter();
+                    skipLine();
 
                     if((playerRolls.get(playerRolls.size() - 2) == 1) && (playerRolls.get(playerRolls.size() - 1) == 1)){
 
@@ -142,7 +142,7 @@ public class PigDiceGame
 
                         turn = 1;
 
-                        enter();
+                        skipLine();
 
                         displayScores(playerScore, computerScore);
 
@@ -152,7 +152,7 @@ public class PigDiceGame
 
                         turn = 1;
 
-                        enter();
+                        skipLine();
 
                         displayScores(playerScore, computerScore);
 
@@ -160,19 +160,19 @@ public class PigDiceGame
 
                         System.out.println("Good roll!");
 
-                        enter();
+                        skipLine();
 
                         playerScore = playerScore + playerRolls.get(playerRolls.size() - 2) + (playerRolls.get(playerRolls.size() - 1));
 
                         displayScores(playerScore, computerScore);
 
-                        enter();
+                        skipLine();
 
                         System.out.println("Would you like to roll again? (Yes/No)");
 
-                        enter();
+                        skipLine();
 
-                        arrow();
+                        arrowIndicator();
 
                         input = scanner1.nextLine();
 
@@ -214,9 +214,9 @@ public class PigDiceGame
 
                 do{
 
-                    spacer();
+                    rollSeparate();
 
-                    enter();
+                    skipLine();
 
 
                     System.out.println("It is the computer's turn to roll");
@@ -231,13 +231,13 @@ public class PigDiceGame
 
                     System.out.println("The computer rolled a " + computerRolls.get(computerRolls.size() - 2) + " and a " + computerRolls.get(computerRolls.size() - 1));
 
-                    enter();
+                    skipLine();
 
                     if((computerRolls.get(computerRolls.size() - 2) == 1) && (computerRolls.get(computerRolls.size() - 1) == 1)){
 
                         System.out.println("Great! Looks like the computer got two 1's, that means it is your turn and the computer's score will be reset to 0.");
 
-                        enter();
+                        skipLine();
 
                         computerScore = 0;
 
@@ -245,17 +245,17 @@ public class PigDiceGame
 
                         displayScores(playerScore, computerScore);
 
-                        enter();
+                        skipLine();
 
                     } else if ((computerRolls.get(computerRolls.size() - 2) == 1) || (computerRolls.get(computerRolls.size() - 1) == 1)){
 
-                        enter();
+                        skipLine();
 
                         System.out.println("Looks like the computer got one 1, that means it is your turn.");
 
                         turn = 0;
 
-                        enter();
+                        skipLine();
 
                         displayScores(playerScore, computerScore);
 
@@ -263,13 +263,13 @@ public class PigDiceGame
 
                         System.out.println("The computer made a good roll!");
 
-                        enter();
+                        skipLine();
 
                         computerScore = computerScore + computerRolls.get(computerRolls.size() - 2) + (computerRolls.get(computerRolls.size() - 1));
 
                         displayScores(playerScore, computerScore);
 
-                        enter();
+                        skipLine();
 
                         int randomNum = (int)(Math.random() * 2);
 
@@ -323,19 +323,19 @@ public class PigDiceGame
 
     }
 
-    public static void enter(){
+    public static void skipLine(){
 
         System.out.println();
 
     }
 
-    public static void spacer(){
+    public static void rollSeparate(){
 
         System.out.println("----------------------------------------------------------------");
 
     }
 
-    public static void arrow() {
+    public static void arrowIndicator() {
 
         System.out.print("--->");
 
