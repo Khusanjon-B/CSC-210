@@ -165,6 +165,8 @@ else:
     userInput = input("Type ""Go"" to begin\n")
     while userInput not in "GoGOgo":
         userInput = input("Type ""Go"" to begin\n")
+    
+    timer = 100000000000000
 
     for t in range(3, 0, -1):
         seconds = t % 60
