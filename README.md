@@ -5,3 +5,7 @@ Spotlight:
 --> PigDiceGame.java
 
     ->CSC210 Work - Java/PigDiceGame.java
+
+--> Math Game.py
+
+    ->Python Projects/Math Game.py
