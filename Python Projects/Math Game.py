@@ -1,5 +1,6 @@
 import time
 import random
+import signal
 
 myList = list(range(1000))
 
@@ -13,6 +14,10 @@ for i in myList:
 score = 0
 
 streak = 0
+
+timeStart = 0
+
+timer = 0
 
 gameInfo = {"Operator":"N/A", "Numbers":"-"}
 
@@ -110,21 +115,69 @@ else:
                         if myList[i] < 1000:
                             gameList.append(myList[i])
 
+userInput = input("Do you want a timer? (Yes/No)\n")
+
+uInput = userInput.upper()
+
+while (uInput not in "YESNO"):
+    userInput = input("Do you want a timer? (Yes/No)\n")
+
+    uInput = userInput.upper()
+
+if (uInput == "YES"):
+
+    numTVal = 0
+
+    while numTVal != True:
+
+        userInput = input("Enter time in seconds:\n")
+
+        try:
+            
+            uInput = int(userInput)
+
+            numTVal = isinstance(uInput, int)
+        
+        except ValueError:
+            
+            numTVal = isinstance(uInput, int)
     
+    timer = uInput
 
-userInput = input("Type ""Go"" to begin\n")
+    seconds = timer % 60
+    minutes = int(timer / 60) % 60
+    hours = int(timer / 3600)
+    print("The time you entered was : " + f"{hours:02}:{minutes:02}:{seconds:02}")
 
-while userInput not in "GoGOgo":
+    while userInput not in "GoGOgo":
         userInput = input("Type ""Go"" to begin\n")
 
-for t in range(5, 0, -1):
-    seconds = t % 60
-    minutes = int(t / 60) % 60
-    hours = int(t / 3600)
-    print(f"{seconds:02}")
-    time.sleep(1)
+    for t in range(3, 0, -1):
+        seconds = t % 60
+        minutes = int(t / 60) % 60
+        hours = int(t / 3600)
+        print(f"{seconds:02}")
+        time.sleep(1)
 
-while userInput not in "STOPstopStop":
+    timeStart = time.time()
+
+else:
+    userInput = input("Type ""Go"" to begin\n")
+    while userInput not in "GoGOgo":
+        userInput = input("Type ""Go"" to begin\n")
+
+    for t in range(3, 0, -1):
+        seconds = t % 60
+        minutes = int(t / 60) % 60
+        hours = int(t / 3600)
+        print(f"{seconds:02}")
+        time.sleep(1)
+
+timeDiff = time.time() - timeStart
+
+while (userInput not in "STOPstopStop") and (timeDiff < timer):
+    
+    timeDiff = time.time() - timeStart
     
     length = len(gameList)-1
 
@@ -300,10 +353,18 @@ while userInput not in "STOPstopStop":
             
                 print("Incorrect. The answer was " + str(ans) + ".  Score: " + str(score) + "\n")
     
+    timeDiff = time.time() - timeStart
+
+
+if (timeDiff > timer):
+    print("Times Up!")
+
 print("Your score is " + str(score) + "!")
 
 
-''' -------THIS SECTION IS NOT COMPLETE --------------------------------
+'''________________________________________________________________________________________________________
+
+-------THIS SECTION IS NOT COMPLETE --------------------------------
     
     elif (gameInfo["Operator"] == "ALL"):
     
