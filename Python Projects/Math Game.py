@@ -236,7 +236,7 @@ while (userInput not in "STOPstopStop") and (timeDiff < timer):
 
         userInput = input (str(ans) + " / " + str(num1) + " =       Score: " + str(score) + "   To stop type STOP\n")
         
-        if userInput not in "STOPstopStop":
+        if userInput not in " STOPstopStop ":
 
             if int(userInput) == num2:
             
