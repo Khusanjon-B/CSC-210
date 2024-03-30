@@ -13,9 +13,9 @@ Using the Die class you created in Chapter 4, create a version of the dice game 
 
 • In this version of the game, when the computer does not roll a 1 and can choose whether to roll again, generate a random value between 0 and 1. Have the computer continue to roll the dice when the value is 0.5 or more, and have the computer quit and pass the turn to the player when the value is not 0.5 or more.
 
-Author:
+Author: Khusanjon Bobokhojaev
 
-Last Modified:
+Last Modified: 03.28.2024
 
 */
 
