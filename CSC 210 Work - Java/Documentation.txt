@@ -43,3 +43,7 @@ Arrays:
     Arrays.sort(integerValuesAscending);
 
     System.out.println("Ascending: " + Arrays.toString(integerValuesAscending));
+
+Dictionaries:
+
+https://www.geeksforgeeks.org/java-util-dictionary-class-java/
