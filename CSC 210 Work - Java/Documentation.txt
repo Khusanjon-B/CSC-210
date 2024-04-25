@@ -24,7 +24,6 @@ Scanner:
 
     import java.util.Scanner;
 
-    Scanner scanner1 = new Scanner(System.in);
 
     variable = scanner1.nextLine();
 
@@ -46,4 +45,8 @@ Arrays:
 
 Dictionaries:
 
-https://www.geeksforgeeks.org/java-util-dictionary-class-java/
+    https://www.geeksforgeeks.org/java-util-dictionary-class-java/
+
+number to string:
+
+    String.valueOf(iD)
