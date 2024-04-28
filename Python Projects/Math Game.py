@@ -1,6 +1,5 @@
 import time
 import random
-import signal
 
 myList = list(range(1000))
 
