@@ -27,8 +27,11 @@ timer = 0
 
 #Function to reset variables in order to start new round
 def resetVariables():
+    
+    
+    
     gameList1 = []
-
+    
     gameList2 = []
     
     score = 0
@@ -80,6 +83,11 @@ while playAgain == True:
     
     resetVariables()
     
+    score = 0
+    streak = 0
+    totalQ = 0
+    totalR = 0
+    
     rounds += 1
     
     #Operator Input Validity Checker
@@ -104,7 +112,7 @@ while playAgain == True:
         resetInputChecks()
         
         #In this case inputCheck is user to store whether or not the user's input is a number and that it is greater than 0, but less than 1000
-        while (inputCheck[0] == False and inputCheck[1] == False and inputCheck[2] == False):
+        while (inputCheck[0] == False or inputCheck[1] == False or inputCheck[2] == False):
             
             if inputCheck[0] != True:
             
@@ -160,7 +168,7 @@ while playAgain == True:
         #If user chose to practice only one number query on second number else game List contains values going upto selected inital number
         if inputStore2 != "UPTO":
             
-            while (inputCheck[0] == False and inputCheck[1] == False and inputCheck[2] == False):
+            while (inputCheck[0] == False or inputCheck[1] == False or inputCheck[2] == False):
                 
                 if inputCheck[0] == False:
                 
@@ -204,18 +212,19 @@ while playAgain == True:
             
             gameList1 = int(gameInfo["Number"])
 
-            for i in range(int(gameInfo["Up To Number"])):
-                
+            for i in range(0,inputStore1):
                 gameList2.append(i+1)
+            
         else:
             
-            for i in range(int(gameInfo["Number"])):
-                
+            for i in range(0,gameInfo["Number"]):
                 gameList1.append(i+1)
         resetInputChecks()
         
     #Operator A or S Input Next Query
     elif (inputStore1 == "A") or (inputStore1 == "S"):
+        
+        userInput = "==="
         
         while userInput.upper() not in "ONESTENSHUNDREDS":
             
@@ -320,11 +329,15 @@ while playAgain == True:
         
         break
     
+    timeStart = time.time()
+    
     timeDiff = time.time() - timeStart
 
     #Game start
     
     while (userInput.upper() != "STOP") and (timeDiff < timer):
+        
+        streaksList.append(0)
         
         timeDiff = time.time() - timeStart
         
@@ -334,17 +347,17 @@ while playAgain == True:
         
         if inputStore2 == "ONLY":
             
-            length = len(gameList2)-1
+            length = len(gameList2)
             
-            ranNum1 = random.randint(0, length)
+            ranNum1 = random.randint(0, length-1)
             
         elif inputStore2 == "UPTO":
         
             length = len(gameList1)-1
             
-            ranNum1 = random.randint(0, length)
+            ranNum1 = random.randint(0, length-1)
 
-            ranNum2 = random.randint(0, length)
+            ranNum2 = random.randint(0, length-1)
         
         mode = gameInfo["Operator"]
         
@@ -364,13 +377,17 @@ while playAgain == True:
 
             if userInput not in "STOPstopStop":
 
-                if int(userInput) == ans:
+                try:
+                    inputStore1 = int(userInput)
+                    inputStore1 = "YES"
+                except Exception as e:
+                    inputStore1 = "NO"
+            
+                if inputStore1 == "YES" and int(userInput) == ans:
 
                     streak +=1
 
                     totalR +=1
-                    
-                    streaksList.append(0)
 
                     if streak > 20:
                         score += 11
@@ -413,13 +430,21 @@ while playAgain == True:
 
             if userInput not in "STOPstopStop":
 
-                if int(userInput) == ans:
+                try:
+                    inputStore1 = int(userInput)
+                    
+                    inputStore1 = "YES"
+                    
+                except Exception as e:
+                    inputStore1 = "NO"
+
+            
+                if inputStore1 == "YES" and int(userInput) == ans:
 
                     streak +=1
 
                     totalR +=1
                     
-                    streaksList.append(0)
 
                     if streak > 20:
                         score += 11
@@ -460,19 +485,23 @@ while playAgain == True:
 
             userInput = input (str(ans) + " / " + str(num1) + " =       Score: " + str(score) + "   To stop type STOP\n--->")
             
-            if userInput not in " STOP stop Stop ":
+            if userInput not in "STOPstopStop":
 
-                if int(userInput) == num2:
-                
+                try:
+                    inputStore1 = int(userInput)
+                    
+                    inputStore1 = "YES"
+                    
+                except Exception as e:
+                    inputStore1 = "NO"
+
+            
+                if inputStore1 == "YES" and int(userInput) == num2:
+
                     streak +=1
 
-                    totalR += 1
-
-                    streaksList.append(0)
-
-                    if streaksList[rounds-1] < streak:
-                        
-                        streaksList[rounds-1] == streak
+                    totalR +=1
+                    
 
                     if streak > 20:
                         score += 11
@@ -484,18 +513,23 @@ while playAgain == True:
                         score += 2
                     else:
                         score += 1
-
+                    
+                    if streaksList[rounds-1] < streak:
+                        
+                        streaksList[rounds-1] == streak
+                        
                     print("That's Right! Score: " + str(score) + "\n")
 
                 else:
-                
+            
                     streak = 0
 
                     if score != 0:
-                    
-                        score -=1
                 
-                    print("Incorrect. The answer was " + str(num2) + ".  Score: " + str(score) + "\n")
+                        score -=1
+            
+                    print("Incorrect. The answer was " + str(ans) + ".  Score: " + str(score) + "\n")
+
 
         elif (mode == "D" and inputStore2 == "ONLY"):
             
@@ -509,19 +543,23 @@ while playAgain == True:
 
             userInput = input (str(ans) + " / " + str(num1) + " =       Score: " + str(score) + "   To stop type STOP\n--->")
             
-            if userInput not in " STOP stop Stop ":
+            if userInput not in "STOPstopStop":
 
-                if int(userInput) == num2:
-                
+                try:
+                    inputStore1 = int(userInput)
+                    
+                    inputStore1 = "YES"
+                    
+                except Exception as e:
+                    inputStore1 = "NO"
+
+            
+                if inputStore1 == "YES" and int(userInput) == num2:
+
                     streak +=1
 
-                    totalR += 1
-
-                    streaksList.append(0)
-
-                    if streaksList[rounds-1] < streak:
-                        
-                        streaksList[rounds-1] == streak
+                    totalR +=1
+                    
 
                     if streak > 20:
                         score += 11
@@ -533,20 +571,30 @@ while playAgain == True:
                         score += 2
                     else:
                         score += 1
-
+                    
+                    if streaksList[rounds-1] < streak:
+                        
+                        streaksList[rounds-1] == streak
+                        
                     print("That's Right! Score: " + str(score) + "\n")
 
                 else:
-                
+            
                     streak = 0
 
                     if score != 0:
-                    
-                        score -=1
                 
-                    print("Incorrect. The answer was " + str(num2) + ".  Score: " + str(score) + "\n")
+                        score -=1
+            
+                    print("Incorrect. The answer was " + str(ans) + ".  Score: " + str(score) + "\n")
 
         elif (mode == "S"):
+            
+            length = len(gameList1)
+            
+            ranNum1 = random.randint(0, length-1)
+
+            ranNum2 = random.randint(0, length-1)
         
             num1 = gameList1[ranNum1]
 
@@ -570,13 +618,20 @@ while playAgain == True:
             
             if userInput not in "STOPstopStop":
 
-                if int(userInput) == ans:
+                try:
+                    inputStore1 = int(userInput)
+                    
+                    inputStore1 = "YES"
+                    
+                except Exception as e:
+                    inputStore1 = "NO"
+
+            
+                if inputStore1 == "YES" and int(userInput) == ans:
                 
                     streak +=1
 
                     totalR += 1
-                    
-                    streaksList.append(0)
 
                     if streaksList[rounds-1] < streak:
                         
@@ -606,6 +661,12 @@ while playAgain == True:
                     print("Incorrect. The answer was " + str(ans) + ".  Score: " + str(score) + "\n")
 
         elif (mode == "A"):
+            
+            length = len(gameList1)
+            
+            ranNum1 = random.randint(0, length-1)
+
+            ranNum2 = random.randint(0, length-1)
         
             num1 = gameList1[ranNum1]
 
@@ -621,13 +682,20 @@ while playAgain == True:
 
             if uInput != "STOP":
             
-                if int(userInput) == ans:
+                try:
+                    inputStore1 = int(userInput)
+                    
+                    inputStore1 = "YES"
+                    
+                except Exception as e:
+                    inputStore1 = "NO"
+
+            
+                if inputStore1 == "YES" and int(userInput) == ans:
                 
                     streak +=1
 
                     totalR += 1
-                    
-                    streaksList.append(0)
 
                     if streaksList[rounds-1] < streak:
                         
@@ -673,7 +741,7 @@ while playAgain == True:
     
     totalRList.append(totalR)
     
-    resetVariables()
+    roundGameInfo[rounds-1] = gameInfo.copy()
     
     while userInput.upper() not in "YESNO":
         
@@ -695,7 +763,7 @@ while playAgain == True:
         
         if inputStore1 == "YES":
             
-            print("Number of Rounds Played: " + str(rounds))
+            print("Number of Rounds Played: " + str(rounds) + "\n")
             
             for i in range(rounds):
                 
@@ -742,6 +810,8 @@ while playAgain == True:
                 print("Highest Streak: " + str(streaksList[i]))
                 
                 print("Timer: " + str(timerList[i]))
+                
+                print("\n_____________________________________\n")
                 
     elif inputStore1 == "NO":
         
@@ -757,7 +827,7 @@ while playAgain == True:
         
         if inputStore1 == "YES":
             
-            print("Number of Rounds Played: " + str(rounds))
+            print("Number of Rounds Played: " + str(rounds) + "\n")
             
             for i in range(rounds):
                 
@@ -804,5 +874,8 @@ while playAgain == True:
                 print("Highest Streak: " + str(streaksList[i]))
                 
                 print("Timer: " + str(timerList[i]))
+            
+                print("\n_____________________________________\n")
                 
         print("Thank You")
+    

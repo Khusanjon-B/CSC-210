@@ -24,3 +24,5 @@ print(friends[1:3])
 
 #you can change index values separately
 friends[1] = "Mike"
+
+friends[100] = "woah"
