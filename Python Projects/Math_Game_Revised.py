@@ -42,7 +42,12 @@ def resetVariables():
     for i in inputCheck:
         inputCheck[i] = False
     
-    gameInfo = {"Operator":"", "Number":"", "Up To Number":""}
+    gameInfo["Operator"] =""
+    gameInfo["Number"] = ""
+    
+    gameInfo["Up To Number"] = ""
+    gameInfo["Number Limit Type"] = ""
+    gameInfo["Add/Sub Up To"] = ""
 
 def resetInputChecks():
     for i in inputCheck:
@@ -73,6 +78,8 @@ print("\nWelcome to the math game!")
 
 while playAgain == True:
     
+    resetVariables()
+    
     rounds += 1
     
     #Operator Input Validity Checker
@@ -94,24 +101,26 @@ while playAgain == True:
         
         inputStore2 = userInput.upper()
         
+        resetInputChecks()
+        
         #In this case inputCheck is user to store whether or not the user's input is a number and that it is greater than 0, but less than 1000
-        while inputCheck[0] == False and inputCheck[1] == False and inputCheck[2] == False:
+        while (inputCheck[0] == False and inputCheck[1] == False and inputCheck[2] == False):
             
-            if inputCheck[0] == False:
+            if inputCheck[0] != True:
             
-                if inputStore2 == "UPTO":
+                if inputStore2 in "UPTO":
                     userInput = input("Enter a number you would like to practice up to\n(Example: 15 means going up to 15 x 15 or 225 / 15)\n--->")
-                elif inputStore2 == "ONLY":
+                elif inputStore2 in "ONLY":
                     userInput = input("Enter a number you would like to practice\n(Example: 12 means only practicing multiples of 12)\n--->")
             
-            if inputCheck[0] == True and inputCheck[1] == False and inputCheck[2] == True:
+            if inputCheck[0] == True and inputCheck[1] != True and inputCheck[2] == True:
             
-                if inputStore2 == "UPTO":
+                if inputStore2 in "UPTO":
                     userInput = input("Enter a number other than 0 that you would like to practice up to\n(Example: 15 means going up to 15 x 15 or 225 / 15\n--->")
-                elif inputStore2 == "ONLY":
+                elif inputStore2 in "ONLY":
                     userInput = input("Enter a number other than 0 that you would like to practice\n(Example: 12 means only practicing multiples of 12)\n--->")
                     
-            if inputCheck[0] == True and inputCheck[1] == True and inputCheck[2] == False:
+            if inputCheck[0] == True and inputCheck[1] == True and inputCheck[2] != True:
             
                 if inputStore2 == "UPTO":
                     userInput = input("Enter a number less than or equal to 1000 that you would like to practice up to\n(Example: 15 means going up to 15 x 15 or 225 / 15\n--->")
@@ -122,38 +131,36 @@ while playAgain == True:
                 
                 inputStore1 = int(userInput)
                 
-                inputCheck[0] = isinstance(inputStore1, int)
+                resetInputChecks()
                 
-                if inputStore1 == 0:
-                    inputCheck[1] = False
-                    
-                    resetInputChecks()
-                    
-                elif inputStore1 > 1000:
-                    
-                    resetInputChecks()
-                    
-                    inputCheck[2] = False
-                    
-                else:
+                if inputStore1 != 0 and inputStore1 <= 1000:
                     inputCheck[1] = True
                     inputCheck[2] = True
+                    
+                elif inputStore1 <= 1000:
+                    
+                    inputCheck[2] = True
+                    
+                elif inputStore1 != 0:
+                    inputCheck[1] = True
+                    
                 
+                inputCheck[0] = isinstance(inputStore1, int)
                 
-            except ValueError:
+            except Exception as e:
                 
                 resetInputChecks()
                 
                 inputCheck[0] = isinstance(inputStore1, int)
-
+            
         gameInfo["Number"] = inputStore1
         
         resetInputChecks()
         
         #If user chose to practice only one number query on second number else game List contains values going upto selected inital number
-        if inputStore2 == "ONLY":
+        if inputStore2 != "UPTO":
             
-            while inputCheck[0] == False and inputCheck[1] == False and inputCheck[2] == False:
+            while (inputCheck[0] == False and inputCheck[1] == False and inputCheck[2] == False):
                 
                 if inputCheck[0] == False:
                 
@@ -171,23 +178,23 @@ while playAgain == True:
                 
                     inputStore1 = int(userInput)
                 
-                    inputCheck[0] = isinstance(inputStore1, int)
-                
-                    if inputStore1 == 0:
-                        inputCheck[1] = False
-                        
-                        resetInputChecks()
+                    resetInputChecks()
                     
-                    elif inputStore1 > 1000:
-                        inputCheck[2] = False
-                        
-                        resetInputChecks()
-                    else:
+                
+                    if inputStore1 != 0 and inputStore1 <= 1000:
                         inputCheck[1] = True
                         inputCheck[2] = True
+                    
+                    elif inputStore1 <= 1000:
+                    
+                        inputCheck[2] = True
+                    
+                    elif inputStore1 != 0:
+                        inputCheck[1] = True
                 
+                    inputCheck[0] = isinstance(inputStore1, int)
                 
-                except ValueError:
+                except Exception as e:
                     
                     resetInputChecks()
                 
