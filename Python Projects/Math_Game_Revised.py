@@ -400,9 +400,9 @@ while playAgain == True:
                     else:
                         score += 1
                     
-                    if streaksList[rounds-1] < streak:
+                    if streak > streaksList[rounds-1]:
                         
-                        streaksList[rounds-1] == streak
+                        streaksList[rounds-1] = streak
                         
                     print("That's Right! Score: " + str(score) + "\n")
 
@@ -457,9 +457,9 @@ while playAgain == True:
                     else:
                         score += 1
                     
-                    if streaksList[rounds-1] < streak:
+                    if streak > streaksList[rounds-1]:
                         
-                        streaksList[rounds-1] == streak
+                        streaksList[rounds-1] = streak
                         
                     print("That's Right! Score: " + str(score) + "\n")
 
@@ -514,9 +514,9 @@ while playAgain == True:
                     else:
                         score += 1
                     
-                    if streaksList[rounds-1] < streak:
+                    if streak > streaksList[rounds-1]:
                         
-                        streaksList[rounds-1] == streak
+                        streaksList[rounds-1] = streak
                         
                     print("That's Right! Score: " + str(score) + "\n")
 
@@ -572,9 +572,9 @@ while playAgain == True:
                     else:
                         score += 1
                     
-                    if streaksList[rounds-1] < streak:
+                    if streak > streaksList[rounds-1]:
                         
-                        streaksList[rounds-1] == streak
+                        streaksList[rounds-1] = streak
                         
                     print("That's Right! Score: " + str(score) + "\n")
 
@@ -633,9 +633,9 @@ while playAgain == True:
 
                     totalR += 1
 
-                    if streaksList[rounds-1] < streak:
+                    if streak > streaksList[rounds-1]:
                         
-                        streaksList[rounds-1] == streak
+                        streaksList[rounds-1] = streak
 
                     if streak > 20:
                         score += 11
@@ -697,9 +697,9 @@ while playAgain == True:
 
                     totalR += 1
 
-                    if streaksList[rounds-1] < streak:
+                    if streak > streaksList[rounds-1]:
                         
-                        streaksList[rounds-1] == streak
+                        streaksList[rounds-1] = streak
 
                     if streak > 20:
                         score += 11
