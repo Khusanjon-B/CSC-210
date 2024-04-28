@@ -8,4 +8,4 @@ Spotlight:
 
 --> Math Game.py
 
-    ->Python Projects/Math Game.py
+    ->Python Projects/Math_Game_Revised.py
